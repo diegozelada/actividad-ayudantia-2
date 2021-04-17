@@ -1,3 +1,15 @@
+---
+title: "Untitled"
+output: github_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+
+```{r eval=TRUE}
 library(quanteda)
 library(dplyr)
 library(tidyverse)
@@ -5,7 +17,7 @@ library(utf8)
 library(ggplot2)
 
 
-setwd("D:/Universidad/Minería de datos 2/actividad-ayudantia-2")
+setwd("D:/Universidad/MinerÃ­a de datos 2/actividad-ayudantia-2")
 primer_tiempo2020 <- read_csv("Primer_Tiempo2020.csv", col_names = TRUE)
 
 #str(primer_tiempo2020)
@@ -39,35 +51,35 @@ Uchile_tiros <- filter(fh2020_tiros, equipo == "Universidad de Chile")
 Uchile_pases <- filter(fh2020_pases, equipo == "Universidad de Chile")
 
 
-Uchile_pases <- huachipato_pases[,!(colnames(Uchile_pases) %in% c("equipo"))] 
+Uchile_pases <- Uchile_pases[,!(colnames(Uchile_pases) %in% c("equipo"))] 
 
 Promedios_Pas <- c("Promedio Pases",mean(Uchile_pases$accuratePass),mean(Uchile_pases$totalPass),mean(Uchile_pases$precision_pases))
-huachipato_pases <- rbind(huachipato_pases, Promedios_Pas)
+Uchile_pases <- rbind(Uchile_pases, Promedios_Pas)
 
-Max_Pas <- c("Max Pases",max(huachipato_pases$accuratePass),max(huachipato_pases$totalPass),max(huachipato_pases$precision_pases))
-huachipato_pases <- rbind(huachipato_pases, Max_Pas)
+Max_Pas <- c("Max Pases",max(Uchile_pases$accuratePass),max(Uchile_pases$totalPass),max(Uchile$precision_pases))
+Uchile_pases <- rbind(Uchile_pases, Max_Pas)
 
-Min_Pas <- c("Min Pases",min(huachipato_pases$accuratePass),min(huachipato_pases$totalPass),min(huachipato_pases$precision_pases))
-huachipato_pases <- rbind(huachipato_pases, Min_Pas)
+Min_Pas <- c("Min Pases",min(Uchile_pases$accuratePass),min(Uchile_pases$totalPass),min(Uchile_pases$precision_pases))
+Uchile_pases <- rbind(Uchile_pases, Min_Pas)
 
-huachipato_pases
+Uchile_pases
 
-pases_hua <- huachipato$accuratePass
-huachipato2 <- huachipato[order(huachipato$accuratePass, decreasing = FALSE),]
+pases_Uchile <- Uchile$accuratePass
+Uchile2 <- Uchile[order(Uchile$accuratePass, decreasing = FALSE),]
 
 #dotchart(huachipato$totalPass, labels = huachipato$partido, cex=0.5, xlab = "Pases", ylab = "Partido")
 
-dotchart(huachipato$totalPass, labels = utf8_encode(huachipato$partido), cex=0.5, xlab = "Pases", ylab = "Partido")
+dotchart(Uchile$totalPass, labels = utf8_encode(Uchile$partido), cex=0.5, xlab = "Pases", ylab = "Partido")
 
 
-dotchart(huachipato$accuratePass, labels = utf8_encode(huachipato$partido), cex=0.5, xlab = "Pases", ylab = "Partido")
+dotchart(Uchile$accuratePass, labels = utf8_encode(Uchile$partido), cex=0.5, xlab = "Pases", ylab = "Partido")
 
 
 
-dotchart(huachipato2$totalPass, labels = utf8_encode(huachipato$partido), cex=0.5, xlab = "Pases", ylab = "Partido")
+dotchart(Uchile2$totalPass, labels = utf8_encode(Uchile$partido), cex=0.5, xlab = "Pases", ylab = "Partido")
 
 
-dotchart(huachipato2$totalPass, labels = utf8_encode(huachipato$partido), main="Pases Acertados Huachipato", pch = 16, col=c("darkblue","dodgerblue"),lcolor="gray90", cex=0.8, xlab = "Pases", ylab = "Partido", cex.main=2,cex.lab=1.5)
+dotchart(Uchile2$totalPass, labels = utf8_encode(Uchile$partido), main="Pases Acertados Uchile", pch = 16, col=c("darkblue","dodgerblue"),lcolor="gray90", cex=0.8, xlab = "Pases", ylab = "Partido", cex.main=2,cex.lab=1.5)
 
 
 
@@ -77,3 +89,6 @@ texto <- iconv(texto, to = "ASCII//TRANSLIT")
 
 a <- dfm(texto, remove = c(stopwords("es"), "vs", "Universidad"))
 dim(a)
+
+```
+
